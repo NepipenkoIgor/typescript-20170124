@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "noImplicitAny": false,
+    "sourceMap": false,
+    "noEmitOnError": true,
+    "strictNullChecks": true
+  },
+  "include": ["./lesson-1/class-work.ts"],
+  "exclude": [
+    "node_modules"
+  ]
+}
