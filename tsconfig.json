@@ -7,8 +7,9 @@
     "noEmitOnError": true,
     "strictNullChecks": true
   },
-  "include": ["./lesson-1/class-work.ts"],
+  "include": ["./lesson-1/**/*.ts"],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "./lesson-1/menu/**/*.ts"
   ]
 }
