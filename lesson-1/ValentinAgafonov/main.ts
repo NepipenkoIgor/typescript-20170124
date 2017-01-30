@@ -4,7 +4,7 @@ type menuItem = {
     items?: menuList
 };
 
-type menuList = menuItem[]
+type menuList = menuItem[];
 
 let menu: menuList  = [
     {
