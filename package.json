@@ -1,7 +1,6 @@
 {
   "name": "typescript-20170124",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,5 +10,14 @@
   "license": "ISC",
   "devDependencies": {
     "typescript": "^2.1.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ermo4enkov/typescript-20170124.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ermo4enkov/typescript-20170124/issues"
+  },
+  "homepage": "https://github.com/ermo4enkov/typescript-20170124#readme",
+  "description": ""
 }
