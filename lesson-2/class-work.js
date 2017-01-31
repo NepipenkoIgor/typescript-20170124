@@ -5,7 +5,6 @@
 // }
 //
 // console.log(getAverage(1, 2, 4));
-
 // function getAverage(a: number, b: number, c?: number): string {
 //   let total: number = a;
 //   let count: number = 1;
@@ -19,7 +18,6 @@
 //   return `The average is ${average}`;
 // }
 // console.log(getAverage(1, 2));
-
 // function getAverage(a: number, b: number, c: number = 0): string {
 //   let total: number = a + b + c;
 //   let average: number = total / 3;
@@ -27,7 +25,6 @@
 // }
 //
 // console.log(getAverage(1, 2));
-
 // function getAverage(...a: number[]): string {
 //   let total: number = 0;
 //   let count: number = 0;
@@ -73,7 +70,6 @@
 //   return `The average is ${average}`;
 // }
 // getAverage('1', '2', '3');
-
 // interface IAccount {
 //   name: string;
 //   age: number;
@@ -110,7 +106,6 @@
 // }
 //
 // let person = new Profile('Igor', 30);
-
 // class Singleton {
 //   private static instance: Singleton;
 //
@@ -151,5 +146,3 @@
 //     return 'Igor';
 //   }
 // }
-
-
