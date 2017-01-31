@@ -57,7 +57,7 @@ function generateMenu(list: menuList): string {
 
 function generateItem(item: menuItem): string {
 
-  let titleClass = ''
+  let titleClass: string = ''
 
   if(item.items){
     titleClass = 'title'
