@@ -7,7 +7,7 @@
     "noEmitOnError": true,
     "strictNullChecks": true
   },
-  "include": ["./home-work.ts"],
+  "include": ["./lesson-1/Roman Ermochenkov/home-work.ts"],
   "exclude": [
     "node_modules"
   ]
