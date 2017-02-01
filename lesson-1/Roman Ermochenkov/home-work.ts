@@ -3,5 +3,17 @@
  */
 
 
-let a =  5 : number;
+// interface Iprofile {
+//     name:string;
+//     surname: string;
+// }
+
+let account = {
+    name: 'Roman',
+    id: 23;
+}
+
+let user:typeof account;
+
+user = [1];
 

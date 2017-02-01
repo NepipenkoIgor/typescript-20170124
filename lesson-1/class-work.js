@@ -1,17 +1,17 @@
+// область TypeScript
+// interface IProfile {
+//   name: string;
+//   surname: string;
+// }
+var account = {
+    name: 'Igor',
+    surname: 'Nepipenko'
+};
 // область JavaScript
-// let profile = IProfile;
-//
-// let account = {
-//   name: 'Igor',
-//   surname: 'Nepipenko'
-// }
-//
-// // область JavaScript
-// let person: typeof account;
-//
-// person = {
-//   name: 'Igor'
-// }
+var person;
+person = {
+    name: './Igor'
+};
 //
 // class A {
 // }

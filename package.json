@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Roma Ermo4enkov",
   "license": "ISC",
   "devDependencies": {
     "typescript": "^2.1.5"
@@ -19,5 +19,9 @@
     "url": "https://github.com/ermo4enkov/typescript-20170124/issues"
   },
   "homepage": "https://github.com/ermo4enkov/typescript-20170124#readme",
+  "dependencies": {
+    "npm": "^4.1.2",
+    "tslint": "^4.4.2"
+  },
   "description": ""
 }
