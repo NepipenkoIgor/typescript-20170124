@@ -1,19 +1,51 @@
-/**
- * Created by ermo4enkov on 1/31/17.
- */
-
-
 // interface Iprofile {
 //     name:string;
 //     surname: string;
 // }
 
-let account = {
-    name: 'Roman',
-    id: 23;
+// let account = {
+//     name: 'Roma',
+//     surname: 'Ermochenkov';
+// }
+//
+// let user:typeof account;
+//
+// user = [1];
+
+let el: HTMLElement = document.getElementById("result");
+
+let a = "fffff";
+
+el.append(a);
+
+class Greeter {
+
+    element: HTMLElement;
+    span: HTMLElement;
+    time: number;
+
+    constructor(element: HTMLElement){
+        this.element = element;
+        this.element.innerHTML += "Time is: ";
+        this.span = document.createElement('span');
+        this.element.appendChild(this.span);
+        this.span.innerText = new Date().toUTCString();
+    }
+
+    time() {
+        this.timerToken = setInterval ( () => this.span.innerHTML =  new Date().toUTCString(), 500);
+    }
+
+    stop() {
+        clearTimeout(this.timerToken);
+    }
+
 }
 
-let user:typeof account;
 
-user = [1];
+window,onload = () => {
+    let el = document.getElementById('result');
+    let greeter = new Greeter(el);
+    greeter.time();
+}
 
