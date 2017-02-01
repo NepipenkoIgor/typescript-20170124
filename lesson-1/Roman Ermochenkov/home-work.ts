@@ -49,3 +49,9 @@ window,onload = () => {
     greeter.time();
 }
 
+
+let firstName: string = "Roma";
+let age: number = 22;
+let info: string = `Name ${firstName} age ${age}`;
+
+
