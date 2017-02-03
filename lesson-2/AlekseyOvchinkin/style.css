@@ -1,0 +1,12 @@
+
+.hidden {
+    display: none;
+}
+
+.selected {
+    font-weight: bold;
+}
+
+a {
+    margin: 5px;
+}
