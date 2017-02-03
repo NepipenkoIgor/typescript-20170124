@@ -1,0 +1,9 @@
+Улучшить flickr app
+
+1. Избавтесь от `any`
+2. Сортируйте фото по title и можете добавить debounce click на search( lodash)  и сортировку по имени или названию
+3. Реализуйте возможность отображение имени пользователя, которому пренадлежит фото
+`${this.uri}method=flickr.people.getInfo&
+            api_key=${this.apiKey}&user_id=${photo.owner}&format=json&nojsoncallback=1`
+
+ используйте  -> Promise / Q library

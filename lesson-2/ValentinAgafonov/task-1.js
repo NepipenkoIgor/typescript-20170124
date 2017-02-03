@@ -6,11 +6,11 @@ function isInArray(list, firstElement) {
     }
     var elements = [firstElement].concat(otherElements);
     for (var _a = 0, elements_1 = elements; _a < elements_1.length; _a++) {
-        var element = elements_1[_a];
+        var element_1 = elements_1[_a];
         var hasElement = false;
         for (var _b = 0, list_1 = list; _b < list_1.length; _b++) {
             var item = list_1[_b];
-            if (item === element) {
+            if (item === element_1) {
                 hasElement = true;
             }
         }

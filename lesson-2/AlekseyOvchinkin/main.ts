@@ -12,19 +12,19 @@ class HomeWork implements IHomeWork {
     public isInArray = <T>(arr: T[], ...params: T[]) => {
 
         for (let item of params) {
-            if (arr.indexOf(item) == -1) {
+            if (arr.indexOf(item) === -1) {
                 return false;
             }
         }
 
         return true;
-    };
+    }
 
     // 2
     // TypeGuard
     private isString = (value: strNum): value is string => {
-        return typeof value === 'string'
-    };
+        return typeof value === 'string';
+    }
 
     public summator = (...params: strNum[]): number => {
 
@@ -41,7 +41,7 @@ class HomeWork implements IHomeWork {
         }
 
         return result;
-    };
+    }
 
     // 3
     public getUnique = <T>(...params: T[]): T[] => {
@@ -50,7 +50,7 @@ class HomeWork implements IHomeWork {
 
         for (let item of params) {
 
-            if (uniqArray.indexOf(item) != -1) {
+            if (uniqArray.indexOf(item) !== -1) {
                 continue;
             }
 
@@ -293,7 +293,8 @@ console.log(homeWork.getUnique<strNum>(1, 2, 3, 4, '3', 5, 4, '5', 6));
 
 // 5
 let div = document.getElementById(ID_CONTAINER) as HTMLDivElement;
-new Menu(div);
+let menu = new Menu(div);
+
 
 
 

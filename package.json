@@ -10,7 +10,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/jquery": "^2.0.40",
     "tslint": "^4.4.2",
     "typescript": "^2.1.5"
+  },
+  "dependencies": {
+    "whatwg-fetch": "^2.0.2"
   }
 }
