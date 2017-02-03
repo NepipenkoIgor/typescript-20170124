@@ -4,10 +4,8 @@
     "target": "es5",
     "noImplicitAny": false,
     "sourceMap": false,
-    "noEmitOnError": true
+    "noEmitOnError": true,
+    "strictNullChecks": true
   },
-  "include": ["./lesson-1/AleksandrVoznuk/menu/main.ts"],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["./*.ts"]
 }

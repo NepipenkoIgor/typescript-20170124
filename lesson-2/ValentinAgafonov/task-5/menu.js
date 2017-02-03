@@ -17,7 +17,7 @@ var menuList = [
                     { title: 'Змеи' },
                     { title: 'Птицы' },
                     { title: 'Ящерицы' },
-                ],
+                ]
             }
         ]
     },
@@ -47,14 +47,25 @@ var Menu = (function () {
         this.element.innerHTML = this.generateMenu(this.menuList);
         this.element.addEventListener('click', this.clickHandler);
     }
+    Menu.prototype.getElem = function () {
+        return this.element;
+    };
+    Menu.toggleLi = function (li) {
+        li.classList.toggle('menu-open');
+    };
+    Menu.openLi = function (li) {
+        li.classList.add('menu-open');
+    };
+    Menu.closeLi = function (li) {
+        li.classList.remove('menu-open');
+    };
     Menu.prototype.clickHandler = function (ev) {
         var el = ev.target;
         var classList = el.classList;
         if (!classList.contains('title')) {
             return;
         }
-        var parentLi = el.parentNode;
-        parentLi.classList.toggle('menu-open');
+        Menu.toggleLi(el.parentNode);
     };
     Menu.prototype.generateMenu = function (menuList) {
         var content = "<ul>";
@@ -73,3 +84,19 @@ var Menu = (function () {
 }());
 var element = document.querySelector('.menu');
 var nav = new Menu({ element: element, menuList: menuList });
+var testGetElem = document.getElementById('testGetElem');
+testGetElem.addEventListener('click', function () {
+    console.log(nav.getElem());
+});
+var testToggleLi = document.getElementById('testToggleLi');
+testToggleLi.addEventListener('click', function () {
+    Menu.toggleLi(document.querySelector('.menu li:first-child'));
+});
+var testOpenLi = document.getElementById('testOpenLi');
+testOpenLi.addEventListener('click', function () {
+    Menu.openLi(document.querySelector('.menu li:first-child'));
+});
+var testCloseLi = document.getElementById('testCloseLi');
+testCloseLi.addEventListener('click', function () {
+    Menu.closeLi(document.querySelector('.menu li:first-child'));
+});
