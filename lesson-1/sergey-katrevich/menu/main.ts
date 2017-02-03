@@ -1,6 +1,8 @@
 type menu = {title: string; items?: menuList};
 type menuList = menu[];
 
+// type menuList = {title: string; items?: menuList}[];
+
 let menuList: menuList = [
     {
         title: 'Животные', items: [
@@ -43,25 +45,18 @@ let menuList: menuList = [
 ];
 
 function generateMenu(list: menuList): string {
-  function createMenu (items: menuList | undefined) {
-    if (!items) {
-      return '';
-    }
-    let content: string = `<ul>`;
-    for (let item of items) {
-      content += createItem(item);
-    }
-    return content + `</ul>`;
+  function createMenu (items: menuList) {
+    let menuContent = items.map(createItem).join('');
+    return `<ul>${menuContent}</ul>`;
   }
+
   function createItem(item: menu) {
-    let items = item.items;
-    let isSubMenu = items && items.length > 0;
-    let content = `<li><a ${isSubMenu ? 'class="title"' : ''}>${item.title}</a>`;
-    if (isSubMenu) {
-      content += createMenu(items);
-    }
-    return content + `</li>`;
+    let items: undefined|menuList = item.items;
+    let clsTitle = items ? ' class="title"' : '';
+    let itemContent = items ? createMenu(items as menuList) : '';
+    return `<li><a${clsTitle}>${item.title}</a>${itemContent}</li>`;
   }
+
   return createMenu(list);
 }
 
