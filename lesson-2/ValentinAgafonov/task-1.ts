@@ -20,7 +20,6 @@ export function isInArray(list: anyBasic[], firstElement: anyBasic, ...otherElem
 
 
 //  Такие вызовы невозможны:
-  
 //  isInArray(1);
 //  isInArray();
 //  isInArray(1,2,3,4);

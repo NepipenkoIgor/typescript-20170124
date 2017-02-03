@@ -30,10 +30,10 @@ function isStringArray(input: number[] | string[]): input is string[] {
 
 // вопрос: можно ли в функции имплементации в данном случае указать тип для rest парараметра как:
 // массив строк либо массив чисел (чтобы избежать использования массива any) ?
-
+// ?????
 function summator2(...numbers: number[]);
 function summator2(...numbers: string[]);
-function summator2(...numbers: any[]) {
+function summator2(...numbers: (number | string)[]  ) {
     let sum: number = 0,
         isNum = isNumberArray(numbers),
         isStr = isStringArray(numbers);

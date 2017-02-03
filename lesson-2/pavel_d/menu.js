@@ -44,34 +44,27 @@ var Menu = (function () {
     function Menu(opt) {
         this.element = opt.element;
         this.menuList = opt.menuList;
+        this.ids = [];
         this.element.innerHTML = this.generateMenu(this.menuList);
         this.element.addEventListener('click', this.clickHandler);
     }
-    Menu.prototype.getElem = function () {
-        return this.element;
-    };
-    Menu.toggleLi = function (li) {
-        li.classList.toggle('menu-open');
-    };
-    Menu.openLi = function (li) {
-        li.classList.add('menu-open');
-    };
-    Menu.closeLi = function (li) {
-        li.classList.remove('menu-open');
-    };
     Menu.prototype.clickHandler = function (ev) {
         var el = ev.target;
         var classList = el.classList;
         if (!classList.contains('title')) {
             return;
         }
-        Menu.toggleLi(el.parentNode);
+        var parentLi = el.parentNode;
+        parentLi.classList.toggle('menu-open');
     };
     Menu.prototype.generateMenu = function (menuList) {
         var content = "<ul>";
+        var id;
         for (var _i = 0, menuList_1 = menuList; _i < menuList_1.length; _i++) {
             var a = menuList_1[_i];
-            content += "<li><a " + (a.items ? 'class=title' : '') + " \n" + (a.link ? 'href=' + a.link : '') + ">" + a.title + "</a>";
+            id = this.ids.length + 1;
+            this.ids.push(id);
+            content += "<li data-id=" + id + "><a " + (a.items ? 'class=title' : '') + (a.link ? 'href=' + a.link : '') + ">" + a.title + "</a>";
             if (!a.items) {
                 content += "</li>";
                 continue;
@@ -80,23 +73,60 @@ var Menu = (function () {
         }
         return content + "</ul>";
     };
+    Menu.prototype.getMenuItemById = function (id) {
+        if (!~this.ids.indexOf(id)) {
+            return null;
+        }
+        return this.element.querySelector("li[data-id=\"" + id + "\"]");
+    };
+    Menu.prototype.getElem = function () {
+        return this.element;
+    };
+    Menu.prototype.open = function (id) {
+        var mi = this.getMenuItemById(id);
+        if (mi === null) {
+            return;
+        }
+        if (mi.classList.contains('menu-open')) {
+            return;
+        }
+        mi.classList.add('menu-open');
+    };
+    Menu.prototype.close = function (id) {
+        var mi = this.getMenuItemById(id);
+        if (mi === null) {
+            return;
+        }
+        if (!mi.classList.contains('menu-open')) {
+            return;
+        }
+        mi.classList.remove('menu-open');
+    };
+    Menu.prototype.toggle = function (id) {
+        var mi = this.getMenuItemById(id);
+        if (mi === null) {
+            return;
+        }
+        if (mi.classList.contains('menu-open')) {
+            mi.classList.remove('menu-open');
+            return;
+        }
+        mi.classList.add('menu-open');
+    };
     return Menu;
 }());
 var element = document.querySelector('.menu');
 var nav = new Menu({ element: element, menuList: menuList });
-var testGetElem = document.getElementById('testGetElem');
-testGetElem.addEventListener('click', function () {
-    console.log(nav.getElem());
+var inp = document.querySelector('input');
+// Show id of current menu item
+element.addEventListener('mouseover', function (ev) {
+    var el = ev.target;
+    var id = el.parentElement.getAttribute('data-id');
+    if (id === null) {
+        return;
+    }
+    inp.value = id;
 });
-var testToggleLi = document.getElementById('testToggleLi');
-testToggleLi.addEventListener('click', function () {
-    Menu.toggleLi(document.querySelector('.menu li:first-child'));
-});
-var testOpenLi = document.getElementById('testOpenLi');
-testOpenLi.addEventListener('click', function () {
-    Menu.openLi(document.querySelector('.menu li:first-child'));
-});
-var testCloseLi = document.getElementById('testCloseLi');
-testCloseLi.addEventListener('click', function () {
-    Menu.closeLi(document.querySelector('.menu li:first-child'));
-});
+document.querySelector('#btOpen').addEventListener('click', function () { nav.open(+inp.value); });
+document.querySelector('#btClose').addEventListener('click', function () { nav.close(+inp.value); });
+document.querySelector('#btToggle').addEventListener('click', function () { nav.toggle(+inp.value); });
