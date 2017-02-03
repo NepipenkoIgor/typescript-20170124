@@ -45,7 +45,8 @@ let menuList: menuList = [
 ];
 
 function generateMenu(list: menuList): string {
-  function createMenu (items: menuList) {
+  function createMenu (items?: menuList) {
+    if (!items) return '';
     let menuContent = items.map(createItem).join('');
     return `<ul>${menuContent}</ul>`;
   }
@@ -53,8 +54,8 @@ function generateMenu(list: menuList): string {
   function createItem(item: menu) {
     let items: undefined|menuList = item.items;
     let clsTitle = items ? ' class="title"' : '';
-    let itemContent = items ? createMenu(items as menuList) : '';
-    return `<li><a${clsTitle}>${item.title}</a>${itemContent}</li>`;
+    let aTag = `<a${clsTitle}>${item.title}</a>`;
+    return `<li>${aTag}${createMenu(items)}</li>`;
   }
 
   return createMenu(list);
