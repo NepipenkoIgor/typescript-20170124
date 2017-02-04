@@ -11,10 +11,14 @@
   "license": "ISC",
   "devDependencies": {
     "@types/jquery": "^2.0.40",
+    "@types/lodash": "^4.14.37",
+    "@types/q": "^0.0.32",
     "tslint": "^4.4.2",
     "typescript": "^2.1.5"
   },
   "dependencies": {
-    "whatwg-fetch": "^2.0.2"
+    "whatwg-fetch": "^2.0.2",
+    "lodash": "^4.16.4",
+    "q": "^1.4.1"
   }
 }
