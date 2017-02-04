@@ -146,3 +146,4 @@
 //     return 'Igor';
 //   }
 // }
+//# sourceMappingURL=class-work.js.map

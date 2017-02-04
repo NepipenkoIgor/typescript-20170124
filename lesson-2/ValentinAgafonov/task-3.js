@@ -1,5 +1,5 @@
 "use strict";
-var task_1_1 = require('./task-1');
+var task_1_1 = require("./task-1");
 function getUnique(arr) {
     var uniqueList = [];
     for (var _i = 0, arr_1 = arr; _i < arr_1.length; _i++) {

@@ -23,6 +23,6 @@ function revertLettersInWord(inputSting) {
 function isLetter(str) {
     return !!(str.match(/[a-z]/i));
 }
-console.log(revertLettersInAllWords('s1tar3t 2 hellow')); //  w1oll3e 2 htrats
-console.log(revertLettersInAllWords('s1ta$%r3t 2 hel^low')); //  w1ol$%l3e 2 htr^ats
-console.log(revertLettersInAllWords('s1tar3t 2   low5')); //  w1olt3r 2   ats5
+//  console.log(revertLettersInAllWords('s1tar3t 2 hellow'));       //  t1rat3s 2 wolleh
+//  console.log(revertLettersInAllWords('s1ta$%r3t 2 hel^low'));    //  t1ra$%t3s 2 wol^leh
+//  console.log(revertLettersInAllWords('s1tar3t 2   low5'));       //  t1rat3s 2   wol5
