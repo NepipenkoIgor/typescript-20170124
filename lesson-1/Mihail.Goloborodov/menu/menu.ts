@@ -47,12 +47,13 @@ function generateMenu(list: menuList): string {
   for (let a of list) {
     content += `<li>`;
     if (a.items) {
-      content += `<a class="title">${a.title}</a>${generateMenu(a.items)}</ul>`;
-      continue;
+      content += `<a class="title">${a.title}</a>` + generateMenu(a.items);
+    } else {
+      content += a.title;
     }
-    content += `${a.title}</li>}`;
+    content += `</li>`;
   }
-  content += ``;
+  content += `</ul>`;
   return content;
 }
 

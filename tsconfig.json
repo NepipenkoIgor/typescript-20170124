@@ -1,16 +1,13 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "lib": ["es5","dom","es2015.promise"],
     "target": "es5",
     "noImplicitAny": false,
-    "sourceMap": true,
+    "sourceMap": false,
     "noEmitOnError": true,
-    "strictNullChecks": true,
-    "typeRoots": ["node_modules/@types","types"]
+    "strictNullChecks": true
   },
-  "include": ["./lesson-1/class-work.ts",
-    "lesson-2/class-work.ts", "lesson-3/flickr/fetch.ts"],
+  "include": ["./lesson-1/class-work.ts"],
   "exclude": [
     "node_modules"
   ]
