@@ -152,3 +152,4 @@
 //
 // let persone1: IAccount<{id: number, isFemale: boolean}>;
 // let persone2: IAccount<{id: number, name: string, isFemale: boolean}>; 
+//# sourceMappingURL=class-work.js.map
