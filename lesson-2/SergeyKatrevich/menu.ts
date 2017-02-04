@@ -1,5 +1,5 @@
 /*5) Улучшите класс с менюшкой добавив публичные методы
-getElem -возвращает елемент в котором генерится меню;
+getElem - возвращает елемент в котором генерится меню;
 toggle открыть/закрыть элемент меню по метке;
 close закрыть элемент меню по метке;
 open открыть элемент меню по метке
@@ -14,72 +14,83 @@ interface IMenu {
   open(mark: string): void;
 }
 
-type menuList = {title: string, mark?: string, link?: string, items?: menuList}[];
-type menuOpt = {element: HTMLElement, menuList: menuList};
+interface IMenuItem {
+  title: string;
+  mark?: string;
+  link?: string;
+  items?: menuList;
+}
+type menuList = IMenuItem[];
+
+interface IMenuOpt {
+  element: HTMLElement;
+  menuList: menuList;
+}
+
 let menuList: menuList = [
   {
-    title: 'Животные',
-    mark: 'mark',
     items: [
       {
-        title: 'Млекопитающие',
         items: [
           {title: 'Коровы'},
           {title: 'Ослы'},
           {title: 'Собаки'},
-          {title: 'Тигры'}
-        ]
+          {title: 'Тигры'},
+        ],
+        title: 'Млекопитающие',
       },
       {
-        title: 'Другие',
         items: [
           {title: 'Змеи'},
           {title: 'Птицы'},
           {title: 'Ящерицы'},
         ],
-      }
-    ]
+        title: 'Другие',
+      },
+    ],
+    mark: 'mark',
+    title: 'Животные',
   },
   {
-    title: 'Рыбы',
     items: [
       {
-        title: 'Аквариумные',
         items: [
           {title: 'Гуппи'},
-          {title: 'Скалярии'}
-        ]
+          {title: 'Скалярии'},
+        ],
+        title: 'Аквариумные',
       },
       {
-        title: 'Форель',
         items: [
-          {title: 'Морская форель'}
-        ]
-      }
-    ]
-  }
+          {title: 'Морская форель'},
+        ],
+        title: 'Форель',
+      },
+    ],
+    title: 'Рыбы',
+  },
 ];
 
 class Menu implements IMenu {
-  protected element: HTMLElement;
-  protected menuList: menuList;
-
-  static toggleMenu(el: HTMLElement) {
+  protected static toggleMenu(el: HTMLElement) {
     const parentLi: HTMLElement = el.parentNode as HTMLElement;
     parentLi.classList.toggle('menu-open');
   }
 
-  static openMenu(el: HTMLElement) {
+  protected static openMenu(el: HTMLElement) {
     const parentLi: HTMLElement = el.parentNode as HTMLElement;
     parentLi.classList.add('menu-open');
   }
 
-  static closeMenu(el: HTMLElement) {
+  protected static closeMenu(el: HTMLElement) {
     const parentLi: HTMLElement = el.parentNode as HTMLElement;
     parentLi.classList.remove('menu-open');
   }
 
-  public constructor(opt: menuOpt) {
+  protected element: HTMLElement;
+  protected menuList: menuList;
+
+  public constructor(opt: IMenuOpt) {
     this.element = opt.element;
     this.menuList = opt.menuList;
     this.element.innerHTML = this.generateMenu(this.menuList);
@@ -105,7 +116,9 @@ class Menu implements IMenu {
     Menu.openMenu(elem);
   }
 
-  protected clickHandler(this: void, ev: MouseEvent): void {
+  // Чтоб WebStorm не выводил предупреждения - что метод может быть статический
+  // Не стрелочная ф-ия - потому что eslint ругается на использование this: void
+  protected clickHandler: EventListener = function(this: void, ev: MouseEvent): void {
     const el: HTMLElement = ev.target as HTMLElement;
     const classList = el.classList;
     if (!classList.contains('title')) {
@@ -113,7 +126,7 @@ class Menu implements IMenu {
     }
     const parentLi = el.parentNode as HTMLLIElement;
     parentLi.classList.toggle('menu-open');
-  }
+  };
 
   protected generateMenu(menu: menuList): string {
     let content: string = `<ul>`;
@@ -132,34 +145,30 @@ class Menu implements IMenu {
   }
 
   protected findElementByMark(mark: string): HTMLElement {
-    return this.element.querySelector(`data-mark="${mark}"`) as HTMLElement;
+    return this.element.querySelector(`[data-mark="${mark}"]`) as HTMLElement;
   }
 
 }
 
 let element = document.querySelector('.menu') as HTMLElement;
-let nav = new Menu({element, menuList})
+let nav = new Menu({element, menuList});
+
+let btnGetElem: HTMLButtonElement = document.querySelector('#get-elem') as HTMLButtonElement;
+let btnToggle: HTMLButtonElement = document.querySelector('#toggle') as HTMLButtonElement;
+let btnOpen: HTMLButtonElement = document.querySelector('#open') as HTMLButtonElement;
+let btnClose: HTMLButtonElement = document.querySelector('#close') as HTMLButtonElement;
 
 const mark: string = 'mark';
-let btnGetElem: HTMLButtonElement = document.querySelector('#getElem') as HTMLButtonElement;
-let btnToggle: HTMLButtonElement = document.querySelector('#toggle') as HTMLButtonElement;
-let btnClose: HTMLButtonElement = document.querySelector('#close') as HTMLButtonElement;
-let btnOpen: HTMLButtonElement = document.querySelector('#open') as HTMLButtonElement;
 
-btnToggle.addEventListener('click', () => {
+btnGetElem.addEventListener('click', () => {
   console.log(nav.getElem());
 });
-
 btnToggle.addEventListener('click', () => {
   nav.toggle(mark);
 });
-
 btnOpen.addEventListener('click', () => {
   nav.open(mark);
 });
-
-btnToggle.addEventListener('click', () => {
+btnClose.addEventListener('click', () => {
   nav.close(mark);
 });
-
-
