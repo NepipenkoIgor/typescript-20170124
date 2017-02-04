@@ -43,16 +43,45 @@ let menuList: menuList = [
   }
 ];
 
+interface IMenu {
+  getElem(): HTMLElement;
+  open(id: number): void;
+  close(id: number): void;
+  toggle(id: number): void;
+}
 
-class Menu {
-  protected element: HTMLElement;
-  protected menuList: menuList;
+class Menu implements IMenu {
+  private _element: HTMLElement;
+  private _menuList: menuList;
 
   public constructor(opt: menuOpt) {
-    this.element = opt.element;
-    this.menuList = opt.menuList;
-    this.element.innerHTML = this.generateMenu(this.menuList);
-    this.element.addEventListener('click', this.clickHandler);
+    this._element = opt.element;
+    this._menuList = opt.menuList;
+    this._element.innerHTML = this.generateMenu(this._menuList);
+    this._element.addEventListener('click', this.clickHandler);
+  }
+
+  public lastId: number = 0;
+
+  public getElem(): HTMLElement {
+    return this._element;
+  }
+
+  public open(id: number): void {
+    this.toggle(id, true);
+  }
+
+  public close(id: number): void {
+    this.toggle(id, false);
+  }
+
+  public toggle(id: number, value?: boolean): void {
+    let el: HTMLLIElement = this.getElem().querySelector(`li[data-id="${id}"]`) as HTMLLIElement;
+    el.classList.toggle('menu-open', value);
+  }
+
+  public getNextId(): number {
+    return ++this.lastId;
   }
 
   protected clickHandler(this: void, ev: MouseEvent): void {
@@ -61,15 +90,15 @@ class Menu {
     if (!classList.contains('title')) {
       return;
     }
-    let parentLi = el.parentNode as HTMLLIElement;
+    let parentLi: HTMLLIElement = el.parentNode as HTMLLIElement;
     parentLi.classList.toggle('menu-open');
   }
 
   protected generateMenu(menuList: menuList): string {
     let content: string = `<ul>`;
     for (let a of menuList) {
-      content += `<li><a ${a.items ? 'class=title' : ''} 
-${a.link ? 'href=' + a.link : ''}>${a.title}</a>`;
+      content += `<li data-id="${this.getNextId()}"><a ${a.items ? 'class=title' : ''}
+        ${a.link ? 'href=' + a.link : ''}>${a.title}</a>`;
       if (!a.items) {
         content += `</li>`;
         continue;
