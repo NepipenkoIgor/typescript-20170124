@@ -8,7 +8,7 @@ let sel: Function = document.querySelector.bind(document);
 let elSliderContainer: HTMLDivElement = sel('.slider-container');
 let elSliderSlide: HTMLDivElement = sel('.slider-slide');
 let elSliderBox: HTMLDivElement = sel('.slider-box');
-let moveable: boolean = false;
+let moveAble: boolean = false;
 let sliderSlideW: number;
 let sliderMinX: number;
 let sliderMaxX: number;
@@ -31,24 +31,23 @@ function correctSlideX(x: number): number {
   return x;
 }
 
-function addListeners() {
-  elSliderSlide.addEventListener('mousedown', () => {
-    moveable = true;
-  });
+function mouseMoveHandler(this: void, ev: MouseEvent): void {
+  if (!moveAble) { return; }
+  let curSlideX: number = ev.clientX - sliderSlideW / 2;
+  curSlideX = correctSlideX(curSlideX);
+  elSliderSlide.style.left = `${curSlideX}px`;
+}
+
+function addListeners(): void {
+  elSliderSlide.addEventListener('mousedown', () => { moveAble = true; });
 
   window.addEventListener('mouseup', () => {
-    if (moveable) { moveable = false; }
+    if (moveAble) { moveAble = false; }
   });
-
-  function mouseMoveHandler(this: void, ev: MouseEvent) {
-    if (!moveable) { return; }
-    let curSlideX: number = ev.clientX - sliderSlideW / 2;
-    curSlideX = correctSlideX(curSlideX);
-    elSliderSlide.style.left = `${curSlideX}px`;
-  }
 
   elSliderContainer.addEventListener('mousemove', mouseMoveHandler);
 }
+
 function sliderInit(): void {
   sliderSlideW = getSliderSlideW(elSliderSlide);
   const rect: ClientRect = elSliderBox.getBoundingClientRect();
