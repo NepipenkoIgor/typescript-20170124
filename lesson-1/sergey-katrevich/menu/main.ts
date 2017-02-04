@@ -64,7 +64,7 @@ function generateMenu(list: menuList): string {
 let navMenuList = document.querySelector('.menu') as HTMLDivElement;
 navMenuList.innerHTML = generateMenu(menuList);
 navMenuList.onclick = (ev: MouseEvent) => {
-  let el = <HTMLAnchorElement>ev.target;
+  let el = ev.target as HTMLAnchorElement;
   let classList = el.classList;
   if (!classList.contains('title')) {
     return;
