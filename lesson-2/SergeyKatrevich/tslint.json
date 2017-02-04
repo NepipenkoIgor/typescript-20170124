@@ -2,7 +2,8 @@
   "extends": "tslint:latest",
   "rules": {
     "curly": true,
-    "quotemark": [false, "double", "avoid-escape"]
+    "quotemark": [false, "double", "avoid-escape"],
+    "no-console": [false]
   },
   "jsRules": {
     "curly": true
