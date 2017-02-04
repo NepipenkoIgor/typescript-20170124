@@ -1,10 +1,16 @@
 /**
  * Created by LinkFly on 2/3/2017.
  */
+type primType = string|number|boolean|void|undefined;
+type primTypeOrArr = primType | primType[];
+function isPrimArray(val: primTypeOrArr): val is primType[] {
+  return Array.isArray(val);
+}
+
 // Utils
-let log = console.log.bind(console);
-let test = (mes: string, res, wait) => {
-  const equalArray = (ar1: any[], ar2: any[]) => {
+let log: Function = console.log.bind(console);
+let test = (mes: string, res: primType | primType[], wait: primType | primType[]) => {
+  const equalArray = (ar1: primType[], ar2: primType[]): boolean => {
     if (ar1.length !== ar2.length) {
       return false;
     }
@@ -17,11 +23,11 @@ let test = (mes: string, res, wait) => {
       }
       idx++;
     }
-    return res;
+    return result;
   };
 
-  const equal = (v1: any, v2: any): boolean => {
-    if (Array.isArray(v1) && Array.isArray(v2)) {
+  const equal = (v1: primType | primType[], v2: primType | primType[]): boolean => {
+    if (isPrimArray(v1) && isPrimArray(v2)) {
       return equalArray(v1, v2);
     }
     return v1 === v2;
@@ -35,8 +41,8 @@ let test = (mes: string, res, wait) => {
   Возвращает true, если все аргументы, кроме первого входят в первый.
   Первым всегда должен быть массив.
   */
-function isInArray(ar: any[], ...rest: any[]): boolean|void {
-  for(const val of ar) {
+function isInArray(ar: primType[], ...rest: primType[]): boolean|void {
+  for (const val of ar) {
     for (let i = 0; i < rest.length; i++) {
       if (rest[i] === val) {
         rest.splice(i, 1);
@@ -57,19 +63,19 @@ test('isInArray (test2): ', isInArray([2, 'a', 3, 'b'], 3, 'x'), undefined);
   Аргументы могут быть либо строкового либо числового типа. Количество их не ограничено
   */
 
-type NumOrStr = number|string;
-function isString(num: NumOrStr): num is string {
+type numOrStr = number|string;
+function isString(num: numOrStr): num is string {
   return typeof num === 'string';
 }
 
-function asNumber(num: NumOrStr): number {
+function asNumber(num: numOrStr): number {
   if (isString(num)) {
     return parseInt(num, 10);
   }
   return num;
 }
 
-function summator(...nums: (number|string)[]): number {
+function summator(...nums: Array<number|string>): number {
   return nums
     .map(asNumber)
     .reduce((a, b) => a + b);
@@ -82,8 +88,8 @@ test('summator: ', summator(1, '2', 3, '4'), 10);
   Порядок элементов результирующего массива должен совпадать с порядком,
   в котором они встречаются в оригинальной структуре.
   */
-function getUnique(...arr) {
-  const res = [] as any[];
+function getUnique(...arr): primType[] {
+  const res: primType[] = [];
   for (const val of arr) {
     if (res.indexOf(val) !== -1) {
       continue;
@@ -92,7 +98,7 @@ function getUnique(...arr) {
   }
   return res;
 }
-test('getUnique: ', getUnique(1, 4, 2, 6, 4, 1, 2), [1, 4, 2, 6]);
+test('getUnique: ', getUnique(1, true, 4, "2", 6, true, 1, "2"), [1, true, 4, "2" , 6]);
 
 /*4)
 Написать функцию котороя будет разворачивать буквы в словах предложения, но только лишь буквы
@@ -113,7 +119,7 @@ function reverseWords(s: string): string {
   while (idx < s.length) {
     const nextCh: char = s[idx++];
     let nextRevCh: char;
-     if (!isLetter(nextCh)) {
+    if (!isLetter(nextCh)) {
       res += nextCh;
       continue;
     }
@@ -125,4 +131,3 @@ function reverseWords(s: string): string {
   return res;
 }
 test('reverseWords:', reverseWords('w2o ab3c rd'), 'd2r cb3a ow');
-
