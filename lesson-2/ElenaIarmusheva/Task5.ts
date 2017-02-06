@@ -129,28 +129,28 @@ let menu = new Menu({element, menuList});
 
 let buttonBox: HTMLElement = document.querySelector('.buttons') as HTMLDivElement;
 buttonBox.innerHTML = `
-            <button type="button" class = "get-elem">Get Elem</button>
-            <button type="button" class = "close">Close</button>
-            <button type="button" class = "open">Open</button>
-            <button type="button" class = "toggle">Toggle</button>
+            <button type="button" class = "button-get-elem">Get Elem</button>
+            <button type="button" class = "button-close">Close</button>
+            <button type="button" class = "button-open">Open</button>
+            <button type="button" class = "button-toggle">Toggle</button>
 `;
 
 buttonBox.addEventListener('click', (e: MouseEvent) => {
     let target: HTMLElement = event.target as HTMLElement;
 
-    if (target.classList.contains('get-elem')) {
+    if (target.classList.contains('button-get-elem')) {
         alert(menu.getElem());
     }
 
-    if (target.classList.contains('close')) {
+    if (target.classList.contains('button-close')) {
         menu.close(menu.getElem() as HTMLElement);
     }
 
-    if (target.classList.contains('open')) {
+    if (target.classList.contains('button-open')) {
        menu.open(menu.getElem() as HTMLElement);
     }
 
-    if (target.classList.contains('toggle')) {
+    if (target.classList.contains('button-toggle')) {
         menu.toggle(menu.getElem() as HTMLElement);
     }
 
