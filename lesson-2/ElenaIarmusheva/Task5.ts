@@ -58,10 +58,9 @@ class Menu implements IMenu {
     }
 
     public toggle(this: void, element: HTMLElement): void {
-        let titles: NodeListOf<HTMLElement> = element.querySelectorAll('.title') as NodeListOf<HTMLAnchorElement>;
-        for (let i = 0; i < titles.length; i++) {
-            let parentElement = titles[i].parentNode as HTMLLIElement;
-            parentElement.classList.toggle('menu-open');
+        let liNodes: NodeListOf<HTMLElement> = element.querySelectorAll('li') as NodeListOf<HTMLLIElement>;
+        for (let i = 0; i < liNodes.length; i++) {
+            liNodes[i].classList.toggle('menu-open');
         }
     }
 
