@@ -13,20 +13,20 @@ type menuOptions = {element: HTMLElement; menuList: menuList};
 
 interface IMenu {
     getElem(): HTMLElement;
-    toggle(element: HTMLLIElement): void;
-    open(element: HTMLLIElement): void;
-    close(element: HTMLLIElement): void;
+    toggle(element: HTMLElement): void;
+    open(element: HTMLElement): void;
+    close(element: HTMLElement): void;
 }
 
 class Menu implements IMenu {
-    protected element: HTMLElement;
-    protected menuList: menuList;
+    protected _element: HTMLElement;
+    protected _menuList: menuList;
 
     constructor(menuItems: menuOptions) {
-        this.element = menuItems.element;
-        this.menuList = menuItems.menuList;
-        this.element.innerHTML = this.generateMenu(this.menuList);
-        this.element.addEventListener('click', this.clickHandler);
+        this._element = menuItems.element;
+        this._menuList = menuItems.menuList;
+        this._element.innerHTML = this.generateMenu(this._menuList);
+        this._element.addEventListener('click', this.clickHandler);
 
     }
 
@@ -54,7 +54,7 @@ class Menu implements IMenu {
     }
 
     public getElem(): HTMLElement {
-        return this.element;
+        return this._element;
     }
 
     public toggle(this: void, element: HTMLElement): void {
@@ -64,7 +64,7 @@ class Menu implements IMenu {
         }
     }
 
-    public close(element: HTMLElement): void {
+    public close(this: void, element: HTMLElement): void {
         let titles: NodeListOf<HTMLElement> = element.querySelectorAll('.title') as NodeListOf<HTMLAnchorElement>;
         for (let i = 0; i < titles.length; i++) {
             let parentElement = titles[i].parentNode as HTMLLIElement;
@@ -72,7 +72,7 @@ class Menu implements IMenu {
         }
     }
 
-    public open(element: HTMLElement): void {
+    public open(this: void, element: HTMLElement): void {
         let titles: NodeListOf<HTMLElement> = element.querySelectorAll('.title') as NodeListOf<HTMLAnchorElement>;
         for (let i = 0; i < titles.length; i++) {
             let parentElement = titles[i].parentNode as HTMLLIElement;
@@ -126,30 +126,30 @@ let menuList: menuList = [
 ];
 let menu = new Menu({element, menuList});
 
-let buttonBox: HTMLElement = document.querySelector('.buttons') as HTMLDivElement;
+let buttonBox: HTMLElement = document.querySelector('.menu-buttons') as HTMLDivElement;
 buttonBox.innerHTML = `
-            <button type="button" class = "button-get-elem">Get Elem</button>
-            <button type="button" class = "button-close">Close</button>
-            <button type="button" class = "button-open">Open</button>
-            <button type="button" class = "button-toggle">Toggle</button>
+            <button type="button" class = ".button-get-elem">Get Elem</button>
+            <button type="button" class = ".button-close">Close</button>
+            <button type="button" class = ".button-open">Open</button>
+            <button type="button" class = ".button-toggle">Toggle</button>
 `;
 
 buttonBox.addEventListener('click', (e: MouseEvent) => {
-    let target: HTMLElement = event.target as HTMLElement;
+    let target: HTMLElement = event.target as HTMLButtonElement;
 
-    if (target.classList.contains('button-get-elem')) {
+    if (target.classList.contains('.button-get-elem')) {
         alert(menu.getElem());
     }
 
-    if (target.classList.contains('button-close')) {
+    if (target.classList.contains('.button-close')) {
         menu.close(menu.getElem() as HTMLElement);
     }
 
-    if (target.classList.contains('button-open')) {
+    if (target.classList.contains('.button-open')) {
        menu.open(menu.getElem() as HTMLElement);
     }
 
-    if (target.classList.contains('button-toggle')) {
+    if (target.classList.contains('.button-toggle')) {
         menu.toggle(menu.getElem() as HTMLElement);
     }
 
