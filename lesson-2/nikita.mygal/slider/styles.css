@@ -1,0 +1,18 @@
+.slider {
+	background: mediumpurple;
+	width: 300px;
+	height: 15px;
+	margin: 5px;
+	position: relative;
+}
+
+.thumb {
+	width: 10px;
+	height: 25px;
+	position: absolute;
+	left: 100%;
+	margin-left: -5px;
+	top: -5px;
+	background: purple;
+	cursor: pointer;
+}
