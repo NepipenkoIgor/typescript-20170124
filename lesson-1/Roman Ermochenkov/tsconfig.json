@@ -4,7 +4,7 @@
     "target": "es5",
     "noImplicitAny": false,
     "sourceMap": false,
-    "noEmitOnError": true,
+    "noEmitOnError": false,
     "strictNullChecks": true
   },
   "include": ["./lesson-1/Roman Ermochenkov/home-work.ts"],

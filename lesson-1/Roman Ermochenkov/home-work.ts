@@ -1,57 +1,77 @@
-// interface Iprofile {
-//     name:string;
-//     surname: string;
-// }
+/*Основываясь на примере который был показан на лекции
+Создайте функцию которая будет генерить меню любой вложенности + обработчик события для открывания/закрывания его
+Пример списка меню ниже.
+    P.S. Очень важно что бы вложеность могла быть любой */
 
-// let account = {
-//     name: 'Roma',
-//     surname: 'Ermochenkov';
-// }
-//
-// let user:typeof account;
-//
-// user = [1];
+type menuList = {title: string, items?: menuList}[]; // здесь мы рекурсивно задаём тип
 
-let el: HTMLElement = document.getElementById("result");
-
-let a = "fffff";
-
-el.append(a);
-
-class Greeter {
-
-    element: HTMLElement;
-    span: HTMLElement;
-    time: number;
-
-    constructor(element: HTMLElement){
-        this.element = element;
-        this.element.innerHTML += "Time is: ";
-        this.span = document.createElement('span');
-        this.element.appendChild(this.span);
-        this.span.innerText = new Date().toUTCString();
+const menu: menuList = [
+    {
+        title: 'Животные', items: [
+        {
+            title: 'Млекопитающие', items: [
+            {title: 'Коровы'},
+            {title: 'Ослы'},
+            {title: 'Собаки'},
+            {title: 'Тигры'}
+        ]
+        },
+        {
+            title: 'Другие', items: [
+            {title: 'Змеи'},
+            {title: 'Птицы'},
+            {title: 'Ящерицы'},
+        ],
+        },
+    ]
+    },
+    {
+        title: 'Рыбы', items: [
+        {
+            title: 'Аквариумные', items: [
+            {title: 'Гуппи'},
+            {title: 'Скалярии'}
+        ]
+        },
+        {
+            title: 'Форель', items: [
+            {title: 'Морская форель'}
+        ]
+        },
+    ]
     }
+];
 
-    time() {
-        this.timerToken = setInterval ( () => this.span.innerHTML =  new Date().toUTCString(), 500);
+
+let ulEl: HTMLUListElement = document.createElement("ul");
+
+function generateMenu(list: menuList, ulEl) {
+
+    for (let item of list) {
+
+        let liEl: HTMLLIElement = document.createElement('li');
+        liEl.innerHTML = item.title;
+        liEl.classList.add('title');
+        ulEl.appendChild(liEl);
+
+        if (item.items) {
+            let htmlMenuList1 : HTMLUListElement = document.createElement('ul');
+            liEl.appendChild(htmlMenuList1);
+            generateMenu(item.items, htmlMenuList1);
+        }
     }
-
-    stop() {
-        clearTimeout(this.timerToken);
-    }
-
+    return ulEl;
 }
 
+let navMenuList: HTMLDivElement = document.querySelector('.menu') as HTMLDivElement;
 
-window,onload = () => {
-    let el = document.getElementById('result');
-    let greeter = new Greeter(el);
-    greeter.time();
-}
+navMenuList.appendChild(generateMenu(menu, ulEl));
 
 
-let firstName: string = "Roma";
-let age: number = 22;
-let info: string = `Name ${firstName} age ${age}`;
-
-
+navMenuList.onclick = (ev: MouseEvent) => {
+    let el = ev.target as HTMLLIElement;
+    let classList = el.classList;
+    if (classList.contains("title")){
+        el.classList.toggle("menu-open")
+    }
+};

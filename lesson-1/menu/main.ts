@@ -1,44 +1,64 @@
-// type menuList = {title: string; items: string[]}[];
-// const menuList: menuList = [
-//   {title: 'JavaScript', items: ['React', 'Angular2', 'Cycle.js']},
-//   {title: 'Dart', items: ['Flutter', 'Angular2', 'Polymer']},
-// ];
-//
-// function generateMenu(list: menuList): string {
-//   let content: string = `<ul>`;
-//   for (let a of list) {
-//     content += `<li><a class="title">${a.title}</a><ul>`;
-//     for (let item of a.items) {
-//       content += `<li><a>${item}</a></li>`;
-//     }
-//     content += `</li></ul>`;
-//   }
-//   content += `</ul>`;
-//   return content;
-// }
-//
-// let navMenuList = document.querySelector('.menu') as HTMLDivElement;
-// navMenuList.innerHTML = generateMenu(menuList);
-// navMenuList.onclick = (ev: MouseEvent) => {
-//   let el = <HTMLAnchorElement>ev.target;
-//   let classList = el.classList;
-//   if (!classList.contains('title')) {
-//     return;
-//   }
-//   let parenLi = el.parentNode as HTMLLIElement;
-//   parenLi.classList.toggle('menu-open');
-// };
+type menuListd = {title: string, items: string[]} [];
 
-let name = "Vasya": string;
+const MenuList: menuListd = [
+    {title: "javaScript", items: ["React", "Angular2", "Cycle.js"]},
+    {title: "Dart", items: ["Flutter", "Angular2", "Polymer"]}
+];
+
+function generateMenu(list: menuListd): string { // Создали фун-ию, которая принимает себе аргумент list, который должен соответствовать типу menuListdmenuListd
+
+    let content: string = `<ul>`; // Создаём переменную с элементом ul
+
+    for (let a of list) { // Запускаем цикл, которым пройдёмся по нашему меню
+
+        content+= `<li><a class="title">${a.title}</a><ul>`; // в переменную content записываем полученные значения
+
+        for (let item of a.items) {
+                content += `<li><a class="title">${item}</a></li>`;
+        }
+
+        content += `</li></ul>`;
+
+    }
+
+    content += `</ul>`;
+    return content; // Возвращаем итоговый набор элементов
+
+}
 
 
-let menu = document.getElementsByClassName("menu");
+let navMenuList = document.querySelector(".menu") as HTMLDivElement;
 
-//let location = document.location;
+if (navMenuList) {
 
-//console.log(location);
+    navMenuList.innerHTML = generateMenu(MenuList);
 
-console.log(menu);
+    navMenuList.onclick = (ev: MouseEvent ) => {
+
+        let el = <HTMLAnchorElement>ev.target;
+        let classlist = el.classList;
+
+        if (classlist.contains("active")){
+            return;
+        }
+
+        let parenLi = el.parentNode as HTMLLIElement;
+        parenLi.classList.toggle('menu-open');
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 // type menuList = {title: string; items?: menuList}[];
 //

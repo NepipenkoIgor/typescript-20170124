@@ -4,17 +4,17 @@
 //   surname: string;
 // }
 
-let account = {
-  name: 'Igor',
-  surname: 'Nepipenko'
-};
-
-// область JavaScript
-let person: typeof account;
-
-person = {
-  name: './Igor'
-}
+// let account = {
+//   name: 'Igor',
+//   surname: 'Nepipenko'
+// };
+//
+// // область JavaScript
+// let person: typeof account;
+//
+// person = {
+//   name: './Igor'
+// }
 //
 // class A {
 // }

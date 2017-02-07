@@ -3,15 +3,17 @@
 //   name: string;
 //   surname: string;
 // }
-var account = {
-    name: 'Igor',
-    surname: 'Nepipenko'
-};
-// область JavaScript
-var person;
-person = {
-    name: './Igor'
-};
+// let account = {
+//   name: 'Igor',
+//   surname: 'Nepipenko'
+// };
+//
+// // область JavaScript
+// let person: typeof account;
+//
+// person = {
+//   name: './Igor'
+// }
 //
 // class A {
 // }
