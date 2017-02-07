@@ -2,8 +2,8 @@
 //  http://learn.javascript.ru/task/slider
 var Slider = (function () {
     function Slider(sliderBox, value) {
-        var _this = this;
         if (value === void 0) { value = 0; }
+        var _this = this;
         this.isActive = false;
         this.sliderTpl = ("\n    <div class=\"slider\">\n        <div class=\"thumb\">\n        </div>\n    </div>\n    ");
         this.sliderBox = sliderBox;

@@ -26,69 +26,70 @@ type ns = number|string;
 
 class Utils {
 
-    public isInArray(arr: any[], ...values: any[]): boolean {
-        return values.every((item: any) => arr.indexOf(item) !== -1);
+  public isInArray(arr: any[], ...values: any[]): boolean {
+    return values.every((item: any) => arr.indexOf(item) !== -1);
+  }
+
+  public summator(...numbers: ns[]): number {
+    let total: number = 0;
+    for (let i = 0, len = numbers.length; i < len; i++) {
+      let element: ns = numbers[i];
+      if (this._isString(element)) {
+        total += parseInt(element, 10);
+      } else if (this._isNumber(element)) {
+        total += element;
+      }
+    }
+    return total;
+  }
+
+  public getUnique(...values: any[]): any[] {
+    function onlyUnique(value, index, self) {
+      return self.indexOf(value) === index;
     }
 
-    public summator(...numbers: ns[]): number {
-        let total: number = 0;
-        for (let i = 0, len = numbers.length; i < len; i++) {
-            let element: ns = numbers[i];
-            if (this._isString(element)) {
-                total += parseInt(element, 10);
-            } else if (this._isNumber(element)) {
-                total += element;
-            }
-        }
-        return total;
-    }
+    return values.filter(onlyUnique);
+  }
 
-    public getUnique(...values: any[]): any[] {
-        function onlyUnique(value, index, self) { 
-            return self.indexOf(value) === index;
-        }
-        return values.filter(onlyUnique);
+  public reversePhrase(phrase: string): string {
+    let phraseSplitted = phrase.split(" ");
+    let reversedArr: any[] = [];
+    for (let i = 0, len = phraseSplitted.length; i < len; i++) {
+      reversedArr.push(this._reverseWord(phraseSplitted[i]));
     }
+    return reversedArr.join(" ");
+  }
 
-    public reversePhrase(phrase: string): string {
-        let phraseSplitted = phrase.split(" ");
-        let reversedArr: any[] = [];
-        for (let i = 0, len = phraseSplitted.length; i < len; i++) {
-            reversedArr.push(this._reverseWord(phraseSplitted[i]));
-        }
-        return reversedArr.join(" ");
-    }
+  private _isLetter(letter: string): boolean {
+    let lettersRegex = /[a-z]/i;
+    return lettersRegex.test(letter);
+  }
 
-    private _isLetter(letter: string): boolean {
-        let lettersRegex = /[a-z]/i;
-        return lettersRegex.test(letter);
+  private _reverseWord(word: string): string {
+    let resultArr: string[] = [];
+    for (let i = 0, len = word.length; i <= len; i++) {
+      if (!this._isLetter(word[i])) {
+        resultArr.push(word.charAt(i));
+        continue;
+      }
+      resultArr.push(word.charAt(len - (i + 1)));
     }
+    return resultArr.join("");
+  }
 
-    private _reverseWord(word: string): string {
-        let resultArr: string[] = [];
-        for (let i = 0, len = word.length; i <= len; i++) {
-            if(!this._isLetter(word[i])) {
-                resultArr.push(word.charAt(i));
-                continue;
-            } 
-            resultArr.push(word.charAt(len - (i + 1)));
-        }
-        return resultArr.join("");
+  private _isString(a: ns): a is string {
+    if (typeof a === 'string') {
+      return true;
     }
+    return false;
+  }
 
-    private _isString(a: ns): a is string {
-        if (typeof a === 'string') {
-            return true;
-        }
-        return false;
+  private _isNumber(a: ns): a is number {
+    if (typeof a === 'number') {
+      return true;
     }
-
-    private _isNumber(a: ns): a is number {
-        if (typeof a === 'number') {
-            return true;
-        }
-        return false;
-    }
+    return false;
+  }
 }
 
 let utilities = new Utils();

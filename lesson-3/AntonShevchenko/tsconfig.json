@@ -2,7 +2,7 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es3",
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "sourceMap": true,
     "noEmitOnError": true,
     "strictNullChecks": true,
@@ -12,7 +12,7 @@
       "dom"
     ]
   },
-  "include": ["./flickr/*"],
+  "include": ["./flickr/*.ts"],
   "exclude": [
     "node_modules"
   ]

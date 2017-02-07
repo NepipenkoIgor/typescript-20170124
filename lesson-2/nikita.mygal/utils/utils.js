@@ -15,7 +15,7 @@ var Utils = (function () {
     Utils.prototype.summator = function () {
         var numbers = [];
         for (var _i = 0; _i < arguments.length; _i++) {
-            numbers[_i - 0] = arguments[_i];
+            numbers[_i] = arguments[_i];
         }
         var total = 0;
         for (var i = 0, len = numbers.length; i < len; i++) {
@@ -32,7 +32,7 @@ var Utils = (function () {
     Utils.prototype.getUnique = function () {
         var values = [];
         for (var _i = 0; _i < arguments.length; _i++) {
-            values[_i - 0] = arguments[_i];
+            values[_i] = arguments[_i];
         }
         function onlyUnique(value, index, self) {
             return self.indexOf(value) === index;

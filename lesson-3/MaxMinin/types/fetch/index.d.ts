@@ -27,12 +27,12 @@ interface IPhotos {
     pages: number;
     perpage: number;
     total: string;
-    photo: Array<IPhoto>
+    photo: Array<IPhoto>;
 }
 
 interface IJsonResponse {
     stat: string;
-    photos: IPhotos
+    photos: IPhotos;
 }
 
 interface IResponse {

@@ -69,7 +69,7 @@ class Flickr {
   protected getPhotos(input: string|IRequest, cb: cdFunction): void {
     fetch(input).then(
         (res: IResponse): Promise<IJsonResponse> => {
-          return res.json()
+          return res.json();
         }
       )
       .then(cb);
