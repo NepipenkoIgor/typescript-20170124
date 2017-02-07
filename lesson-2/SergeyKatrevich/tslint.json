@@ -1,0 +1,14 @@
+{
+  "extends": "tslint:latest",
+  "rules": {
+    "curly": true,
+    "quotemark": [false, "double", "avoid-escape"],
+    "no-console": [false],
+    "max-classes-per-file": [true, 2]
+  },
+  "jsRules": {
+    "curly": true
+  },
+  "rulesDirectory": [
+  ]
+}
