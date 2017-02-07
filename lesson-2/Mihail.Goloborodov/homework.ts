@@ -1,5 +1,7 @@
+type AnyBasic = number | string | boolean | null | undefined;
+
 // 1
-function isInArray(arr: any[], ...values: any[]): boolean {
+function isInArray(arr: AnyBasic[], ...values: AnyBasic[]): boolean {
   return Array.isArray(arr) &&
          values.every((value) => arr.indexOf(value) > -1);
 }
@@ -31,7 +33,7 @@ function summator2(...values: numberOrString[]): number {
 }
 
 // 3
-function getUnique(arr: any[]): any[] {
+function getUnique(arr: AnyBasic[]): AnyBasic[] {
   let result = [];
 
   Array.isArray(arr) && arr.forEach((value) => {
