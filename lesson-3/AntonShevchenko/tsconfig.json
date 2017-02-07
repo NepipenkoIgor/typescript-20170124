@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es3",
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "noEmitOnError": true,
+    "strictNullChecks": true,
+    "typeRoots": ["../../node_modules/@types","../../types","./types"],
+    "lib": [
+      "es2017",
+      "dom"
+    ]
+  },
+  "include": ["./flickr/*.ts"],
+  "exclude": [
+    "node_modules"
+  ]
+}

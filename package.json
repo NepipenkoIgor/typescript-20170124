@@ -9,6 +9,10 @@
   "author": "Roma Ermo4enkov",
   "license": "ISC",
   "devDependencies": {
+    "@types/jquery": "^2.0.40",
+    "@types/lodash": "^4.14.37",
+    "@types/q": "^0.0.32",
+    "tslint": "^4.4.2",
     "typescript": "^2.1.5"
   },
   "repository": {

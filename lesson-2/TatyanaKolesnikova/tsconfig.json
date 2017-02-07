@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "noImplicitAny": false,
+    "sourceMap": false,
+    "noEmitOnError": true,
+    "strictNullChecks": true
+  },
+  "include": ["./functions.ts", "./menu/menu.ts"],
+  "exclude": [
+    "node_modules"
+  ]
+}

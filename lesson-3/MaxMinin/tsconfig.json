@@ -7,12 +7,9 @@
     "sourceMap": true,
     "noEmitOnError": true,
     "strictNullChecks": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
     "typeRoots": ["node_modules/@types","types"]
   },
-  "include": ["./lesson-1/class-work.ts",
-    "lesson-2/class-work.ts", "lesson-3/flickr/fetch.ts","lesson-4/class-work.ts"],
+  "include": ["./flickr/fetch.ts"],
   "exclude": [
     "node_modules"
   ]

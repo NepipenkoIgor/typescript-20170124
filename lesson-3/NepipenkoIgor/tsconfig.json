@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "sourceMap": true,
+    "lib":["es5","dom","es2015.promise","es2015.iterable","es2015.symbol"],
+    "typeRoots": ["../../node_modules/@types"]
+  },
+  "include":["./main.ts"],
+  "exclude": [
+    "node_modules"
+  ]
+}

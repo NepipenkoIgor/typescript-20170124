@@ -1,0 +1,21 @@
+.flickr-box .search-panel{
+    padding: 10px;
+}
+.flickr-box .image-area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.flickr-box .image-area .image-box {
+    width: 200px;
+}
+
+.flickr-box .image-area .image-box p {
+    margin-top: 0;
+}
+
+.flickr-box .image-area .image-box img {
+    width: 100%;
+}
