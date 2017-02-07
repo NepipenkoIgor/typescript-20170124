@@ -19,6 +19,7 @@
   "dependencies": {
     "whatwg-fetch": "^2.0.2",
     "lodash": "^4.16.4",
-    "q": "^1.4.1"
+    "q": "^1.4.1",
+    "whatwg-fetch": "^2.0.2"
   }
 }

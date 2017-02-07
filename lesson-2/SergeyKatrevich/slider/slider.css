@@ -1,0 +1,27 @@
+.slider .slider-container {
+    height: 200px;
+    border: 2px solid black;
+}
+.slider .slider-box {
+    position: relative;
+    width:400px;
+    height:20px;
+    margin-left: 20px;
+    margin-top: 100px;
+    background-color: #eee;
+    -webkit-border-radius: 5px 5px;
+    -moz-border-radius: 5px 5px;
+    border-radius: 5px 5px;
+
+}
+.slider .slider-slide {
+    position: absolute;
+    background: blue;
+    height: 30px;
+    width: 15px;
+    top: -5px;
+    -webkit-border-radius: 5px 5px;
+    -moz-border-radius: 5px 5px;
+    border-radius: 5px 5px;
+    cursor: pointer;
+}

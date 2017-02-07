@@ -4,8 +4,8 @@ var menuList = [
 ];
 function generateMenu(list) {
     var content = "<ul>";
-    for (var _i = 0; _i < list.length; _i++) {
-        var a = list[_i];
+    for (var _i = 0, list_1 = list; _i < list_1.length; _i++) {
+        var a = list_1[_i];
         content += "<li><a class=\"title\">" + a.title + "</a><ul>";
         for (var _a = 0, _b = a.items; _a < _b.length; _a++) {
             var item = _b[_a];
