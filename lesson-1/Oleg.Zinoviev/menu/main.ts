@@ -1,9 +1,9 @@
-type MenuList = {
+type menuList = {
   title: string,
-  items?: MenuList[]
-};
+  items?: menuList
+}[];
 
-const menuList: Array<MenuList> = [
+const menuList: menuList = [
   {
     title: 'Животные', items: [
     {
@@ -44,12 +44,12 @@ const menuList: Array<MenuList> = [
   }
 ];
 
-function generateMenu(list: Array<MenuList>): string {
+function generateMenu(list: menuList): string {
   if (!list) { return ''; }
-  return (`<ul>${list.map(generateMenuItem).join('')}</ul>`);
+  return `<ul>${list.map(generateMenuItem).join('')}</ul>`;
 }
 
-function generateMenuItem(item: MenuList) {
+function generateMenuItem(item): string {
   return (`<li><a class="title">${item.title}</a>${generateMenu(item.items)}</li>`);
 }
 
